@@ -12,6 +12,7 @@ import { LabelledInputController } from '@vaadin/field-base/src/labelled-input-c
 import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
 import { css, registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { MultiselectComboBoxMixin } from './multiselect-combo-box-mixin.js';
+import adjustTextColor from './adjust-text-color.js';
 
 const multiselectComboBox = css`
   [hidden] {
@@ -163,6 +164,7 @@ class MultiselectComboBox extends MultiselectComboBoxMixin(InputControlMixin(The
             </div>
             <template id="repeat" is="dom-repeat" items="[[selectedItems]]" slot="prefix">
               <multiselect-combo-box-chip
+                style$="[[_getChipStyle(item, itemColorPath)]]"
                 slot="prefix"
                 part="chip"
                 item="[[item]]"
@@ -482,6 +484,17 @@ class MultiselectComboBox extends MultiselectComboBoxMixin(InputControlMixin(The
     });
   }
 
+  /** @private */
+  _getChipStyle(item, itemColorPath) {
+    if(itemColorPath) {
+      const color = this._getItemColor(item, itemColorPath)
+      if(color) {
+        return `--chip-text-color: ${adjustTextColor(color)};--chip-background-color: ${color};`
+      }
+    }
+    return ''
+  }
+  
   /** @private */
   _getCompactModeLabel(items) {
     if (typeof this.compactModeLabelGenerator === 'function') {

@@ -19,7 +19,15 @@ export const MultiselectComboBoxMixin = (base) =>
          */
         itemLabelPath: {
           type: String
-        }
+        },
+
+        /**
+         * The item property used for a background color of the item.
+         * @attr {string} item-label-path
+         */
+          itemColorPath: {
+            type: String
+          }
       };
     }
 
@@ -30,4 +38,11 @@ export const MultiselectComboBoxMixin = (base) =>
     _getItemLabel(item, itemLabelPath) {
       return item && Object.prototype.hasOwnProperty.call(item, itemLabelPath) ? item[itemLabelPath] : item;
     }
+  /**
+   * Returns the item backgroundColor.
+   * @protected
+   */
+    _getItemColor(item, itemColorPath) {
+      return item && Object.prototype.hasOwnProperty.call(item, itemColorPath) ? item[itemColorPath] : '';
+     }
   };

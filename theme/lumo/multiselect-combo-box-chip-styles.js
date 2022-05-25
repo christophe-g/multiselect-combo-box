@@ -13,7 +13,7 @@ const chip = css`
     margin: var(--lumo-space-xs) 0 0;
     padding-inline-start: var(--lumo-space-s);
     border-radius: var(--lumo-border-radius);
-    background-color: var(--lumo-contrast-20pct);
+    background-color: var(--chip-background-color, var(--lumo-contrast-20pct));
     cursor: var(--lumo-clickable-cursor);
     white-space: nowrap;
     height: calc(var(--lumo-size-m) - 2 * var(--lumo-space-xs));
@@ -25,7 +25,7 @@ const chip = css`
   [part='label'] {
     font-size: var(--lumo-font-size-s);
     line-height: var(--lumo-line-height-m);
-    color: var(--lumo-body-text-color);
+    color: var(--chip-text-color, var(--lumo-body-text-color));
     font-weight: 500;
     overflow: hidden;
   }
@@ -38,6 +38,7 @@ const chip = css`
     height: var(--lumo-icon-size-m);
     min-width: var(--lumo-icon-size-m);
     font-size: var(--lumo-icon-size-s);
+    color: var(--chip-text-color, var(--lumo-contrast-60pct));
   }
 
   [part='remove-button']::before {
