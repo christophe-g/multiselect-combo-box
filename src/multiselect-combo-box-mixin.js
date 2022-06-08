@@ -34,7 +34,6 @@ export const MultiselectComboBoxMixin = (base) =>
          */
         itemValuePath: {
           type: String
-
         }
       };
     }
@@ -46,6 +45,7 @@ export const MultiselectComboBoxMixin = (base) =>
     _getItemLabel(item, itemLabelPath) {
       return item && Object.prototype.hasOwnProperty.call(item, itemLabelPath) ? item[itemLabelPath] : item;
     }
+
     /**
      * Returns the item backgroundColor.
      * @protected
