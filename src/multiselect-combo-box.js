@@ -479,9 +479,9 @@ class MultiselectComboBox extends MultiselectComboBoxMixin(InputControlMixin(The
     this.$.comboBox.$.dropdown._scroller.__virtualizer.update();
 
     // Wait for chips to render
-    requestAnimationFrame(() => {
-      this.$.comboBox.$.dropdown._setOverlayWidth();
-    });
+    // requestAnimationFrame(() => {
+    //   this.$.comboBox.$.dropdown._setOverlayWidth();
+    // });
   }
 
   /** @private */
@@ -515,6 +515,11 @@ class MultiselectComboBox extends MultiselectComboBoxMixin(InputControlMixin(The
   /** @private */
   _getDisplayValue(selectedItems, itemLabelPath, valueSeparator) {
     return selectedItems.map((item) => this._getItemLabel(item, itemLabelPath)).join(valueSeparator);
+  }
+
+   /** @public */
+   get value() {
+    return (this.selectedItems || []).map((item) => this._getItemValue(item, this.itemValuePath));
   }
 
   /** @private */
